@@ -1,4 +1,4 @@
-# Notes_BlockchainSolityPy
+# Notes_BlockchainSolidityPy
 Notes and code taken while following "Solidity, Blockchain, and Smart Contract Course": https://github.com/smartcontractkit/full-blockchain-solidity-course-py 
 
 The course of [@PatrickAlphaC](https://github.com/PatrickAlphaC) rocks!
