@@ -1,6 +1,6 @@
 # Disclaimer
 This code is based on the course [Solidity, Blockchain, and Smart Contract Course](https://github.com/smartcontractkit/full-blockchain-solidity-course-py).
-In this README you can find some notes/comments about basics of Solidity. There won't be everything, for the complete lesson plese have a look to the course of Patrick Alpha, above.
+In this README you can find some notes/comments about basics of Solidity. There won't be everything, for the complete lesson plese have a look to the course of Patrick Collins (Alpha), above.
 
 # Scopes in Solidity
 * `public`: function `f()` can be called from everywhere (within a contract, in his derivated and outside)
