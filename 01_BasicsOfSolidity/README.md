@@ -24,7 +24,7 @@ Demostration in the code: ToDo
 # `pure` functions vs `view` functions
 ToDo
 
-# `memory` keyword vs `storage` vs `calldata` keyword
+# `memory` vs `storage` vs `calldata` keywords
 ToDo
 
 # Basics data structures in Solidity
