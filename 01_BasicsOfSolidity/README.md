@@ -19,10 +19,27 @@ So, `public` and `external` functions _seems_ to have the same scope, and this i
 
 To conclude, I feel to say that `external` is a subset of `public`, without any comment on their convenient from gas point of view.
 
-Demostration in the code: ToDo
+# `view` functions vs `pure` functions
+Normally, functions which are not `internal` or `private` consumes GAS to be invoked. This doesn't happen when `public` or `external` functions are labeled with `view` or `pure` keyword.
 
-# `pure` functions vs `view` functions
-ToDo
+`view` is used to look at the Blockchain status. Reading the blockchain without modifying it has no costs in Ethereum. Naturally, inside a `view` function we can't modify blockchains' objects. For instance, the following snippet of code will return an *error*:
+
+```
+uint256 private blockchainIntVariable = 66;
+
+function lookIntVariable() public view returns(uint256) {
+    blockchainIntVariable = 67; // Not allowed! We need to pay to perform this operation --> no in a `view` function
+    return blockchainIntVariable; // Allowed.
+}
+```
+
+`pure` functions don't modify as well the blockchain status. Actually, they don't look at all at blockchain status. They are functions that return the same output upon the same input. Obviously, even though they do not concern the blockchain, they are part of the smart contract. Example:
+```
+function offset() public pure returns(uint256) {
+    return 4;
+}
+```
+Passing a state variable (like `blockchainIntVariable`) as a parameter of a `pure` function is not possible: it will lead to a Solidity error.
 
 # `memory` vs `storage` vs `calldata` keywords
 ToDo
