@@ -44,9 +44,15 @@ Passing a state variable (like `blockchainIntVariable`) as a parameter of a `pur
 # `memory` vs `storage` vs `calldata` keywords
 These three keywords defines *where* a variable is stored (note: they also concern functions' parameters). [This article](https://medium.com/coinmonks/solidity-storage-vs-memory-vs-calldata-8c7e8c38bce) explains the concept with useful examples. Let's do a resume of this source (and others) here:
 
-`storage` is where state variables (i.e., variables who are part of a smart contract) are stored. Functions except `pure` and `view` can modify state variables, so variables labeled as `storage` can be modified as well. This location is *persistent* along with the smart contract. In other words, storage variables are stored in the blockchain. The data location - the storage - is composed of 32-bytes slots. Multiple variables can share the same slot, and a variable can also occupies more than one slot. Slots are contiguous to keep the memory location as most compacted as possible. An exception is reprensented by dynamic data structures (e.g., non-static arrays, lists, etc.) whose dimension is unknown a priori. They are stored in a separated storage, and the starting address is computed through a `keccak-256` hash, the same as [Merkle Trees](https://github.com/TheBulgarianUmbrella/BinaryMerkleTree). `const` variables are not saved in the storage but embedded in the smart contract executable.
+`storage` is where state variables (i.e., variables who are part of a smart contract) are stored. Functions except `pure` and `view` can modify state variables, so variables labeled as `storage` can be modified as well. This location is *persistent* along with the smart contract. In other words, storage variables are stored in the blockchain. The data location - the storage - is composed of 32-bytes slots. Multiple variables can share the same slot, and a variable can also occupies more than one slot. Slots are contiguous to keep the memory location as most compacted as possible. An exception is reprensented by dynamic data structures (e.g., non-static arrays, lists, etc.) whose dimension is unknown a priori. They are stored in a separated storage, and the starting address is computed through a `keccak-256` hash, the same as [Merkle Trees](https://github.com/TheBulgarianUmbrella/BinaryMerkleTree). `const` variables are not saved in the storage but embedded in the smart contract executable. With respect to `memory` and `calldata` variables, since they are stored in the blockchain, they consume much more gas.
+
+Example in the source code: function XXX consumed YYY gas.
+```
+ToDo
+```
 
 `memory`
+
 
 `calldata`
 
