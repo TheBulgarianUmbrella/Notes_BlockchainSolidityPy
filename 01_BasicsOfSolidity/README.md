@@ -44,17 +44,27 @@ Passing a state variable (like `blockchainIntVariable`) as a parameter of a `pur
 # `memory` vs `storage` vs `calldata` keywords
 These three keywords defines *where* a variable is stored (note: they also concern functions' parameters). [This article](https://medium.com/coinmonks/solidity-storage-vs-memory-vs-calldata-8c7e8c38bce) explains the concept with useful examples. Let's do a resume of this source (and others) here:
 
-`storage` is where state variables (i.e., variables who are part of a smart contract) are stored. Functions except `pure` and `view` can modify state variables, so variables labeled as `storage` can be modified as well. This location is *persistent* along with the smart contract. In other words, storage variables are stored in the blockchain. The data location - the storage - is composed of 32-bytes slots. Multiple variables can share the same slot, and a variable can also occupies more than one slot. Slots are contiguous to keep the memory location as most compacted as possible. An exception is reprensented by dynamic data structures (e.g., non-static arrays, lists, etc.) whose dimension is unknown a priori. They are stored in a separated storage, and the starting address is computed through a `keccak-256` hash, the same as [Merkle Trees](https://github.com/TheBulgarianUmbrella/BinaryMerkleTree). `const` variables are not saved in the storage but embedded in the smart contract executable. With respect to `memory` and `calldata` variables, since they are stored in the blockchain, they consume much more gas.
+`storage` is where state variables (i.e., variables who are part of a smart contract) are stored. Functions except `pure` and `view` can modify state variables, so variables labeled as `storage` can be modified as well. This location is *persistent* along with the smart contract. In other words, storage variables are stored in the blockchain. The data location - the storage - is composed of 32-bytes slots. Multiple variables can share the same slot, and a variable can also occupy more than one slot. Slots are contiguous to keep the memory location as most compacted as possible. An exception is reprensented by dynamic data structures (e.g., non-static arrays, lists, etc.) whose dimension is unknown a priori. They are stored in a separated storage, and the starting address is computed through a `keccak-256` hash, the same as [Merkle Trees](https://github.com/TheBulgarianUmbrella/BinaryMerkleTree). `const` variables are not saved in the storage but embedded in the smart contract executable.
 
 Example in the source code: function XXX consumed YYY gas.
 ```
 ToDo
 ```
 
-`memory`
+`memory` keyword is reserved for variables which survives only within the scope in which they are defined (i.e., if they are defined at the beginnin of a function, they are deleted when that function terminates). They are mutable as `storage` variables. Even though they are not stored in the blockchain, `memory` variables consumes more gas than `storage` variables (spoiler: also more than `calldata` variables). To understand why, we need to understand how Solidity organizes his space when a `memory` variable is declared. With `storage` variable, the memory cost is covered by the SmartContract itself. With `memory` ToDo
 
+Example in the source code: function XXX consumed YYY gas.
+```
+ToDo
+```
+However, despite the gas cost, I recommend the usage of `memory` keyword if you don't need this variable to be persistent in your SmartContract. The motivation is left to the reader as exercise ;).
 
-`calldata`
+`calldata` works in a similar way than `memory`, but they are immutable. However, they can only be used as parameters of an `external` function. Invoking an external function requires the caller to pay for it, so the gas cost for them is lower.
+
+Example in the source code: function XXX consumed YYY gas.
+```
+ToDo
+```
 
 # Basic types in Solidity
 ToDo
